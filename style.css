@@ -284,6 +284,10 @@ hr {
 
     .endScreenBlock{
         align-items: center;
+        /* fix problem where the text goes over next line of text */
+        white-space: nowrap;
+        
+
     }
 
     .emptySpace3
