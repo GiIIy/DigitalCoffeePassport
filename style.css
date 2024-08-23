@@ -14,7 +14,7 @@
     font-family: "Starbucks Font Light";
     src: url("fonts/SoDoSans-Light.ttf") format("truetype");
     font-weight: lighter;
-    font-style: lighter;
+    font-style: normal;
 }
 
 
@@ -169,13 +169,20 @@ hr {
 }
 
 .hollowCircle {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    border: 3px solid #000;
-    margin-right: 8px; /* Space between the circle and the text */
-    overflow: visible;
+    border: 2px solid #000;
+    margin-right: 8px;
+    background-color: transparent; /* Default empty state */
+    cursor: pointer; /* Show pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
+
+.hollowCircle.checked  {
+    background-color: #000; /* Filled color */
+}
+
 
 .endCoffeeInfomation{
     
@@ -314,3 +321,5 @@ hr {
         align-items: center;
     }
 }
+
+

@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Swipe Detection Variables
     let startX;
     let isSwiping = false;
 
+    // Handle Swipe Action
     function handleSwipe(event) {
         const x = event.touches ? event.touches[0].clientX : event.clientX;
         const distance = startX - x;
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Touch Events
     document.addEventListener('touchstart', (event) => {
         startX = event.touches[0].clientX;
         isSwiping = true;
@@ -33,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isSwiping = false;
     });
 
+    // Mouse Events
     document.addEventListener('mousedown', (event) => {
         startX = event.clientX;
         isSwiping = true;
@@ -45,4 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         isSwiping = false;
     });
+
+    // Hollow Circle Checkmark Toggle
+    const hollowCircles = document.querySelectorAll('.hollowCircle');
+
+    hollowCircles.forEach(circle => {
+        circle.addEventListener('click', function() {
+            // Toggle the checked class
+            this.classList.toggle('checked');
+            
+            // Optionally, update the data-state attribute
+            this.dataset.state = this.classList.contains('checked') ? 'checked' : 'empty';
+        });
+    });
 });
+
+
+
+
