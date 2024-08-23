@@ -50,20 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
         isSwiping = false;
     });
 
-    // Hollow Circle Checkmark Toggle
-    const hollowCircles = document.querySelectorAll('.hollowCircle');
+    // Hollow Circle Checkmark Toggle within brewingMethod
+    const brewingMethods = document.querySelectorAll('.brewingMethod');
 
-    hollowCircles.forEach(circle => {
+    brewingMethods.forEach(method => {
+        const circle = method.querySelector('.hollowCircle');
+        const textElement = method.querySelector('.brewingText');
+
         circle.addEventListener('click', function() {
-            // Toggle the checked class
+            // Toggle the checked class on the circle
             this.classList.toggle('checked');
-            
-            // Optionally, update the data-state attribute
-            this.dataset.state = this.classList.contains('checked') ? 'checked' : 'empty';
+
+            // Toggle the checked class on the associated text
+            if (textElement) {
+                textElement.classList.toggle('checked');
+            }
         });
     });
 });
-
-
-
-
