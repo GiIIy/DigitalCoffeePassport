@@ -67,4 +67,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Local Storage Functions
+    const notesTextarea = document.getElementById('notes');
+    const coffeeId = 'veranda-blend'; // Use a unique identifier for each coffee
+
+    // Load notes from local storage
+    function loadNotes() {
+        const notes = localStorage.getItem(coffeeId);
+        notesTextarea.value = notes ? notes : '';
+    }
+
+    // Save notes to local storage
+    function saveNotes() {
+        const notes = notesTextarea.value;
+        localStorage.setItem(coffeeId, notes);
+    }
+
+    // Event listener for changes in the notes textarea
+    notesTextarea.addEventListener('input', saveNotes);
+
+    // Initial load
+    loadNotes();
 });
+
