@@ -199,6 +199,7 @@ hr {
     align-items: end;
     margin-top: 30px;
     margin-bottom: 10px;
+    
 }
 
 .notes {
@@ -290,13 +291,7 @@ hr {
         height: 175px;
     }
 
-    @media screen and (min-width: 410px) {
-        .endCoffeeInfomation{
-            font-size: 13px;
-        }
-    }
-
-
+   
    
 
 }
