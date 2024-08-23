@@ -286,7 +286,7 @@ hr {
         align-items: center;
         /* fix problem where the text goes over next line of text */
         white-space: nowrap;
-        margin: none;
+        
 
     }
 
