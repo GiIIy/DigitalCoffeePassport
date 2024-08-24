@@ -16,7 +16,7 @@
 /* General Body Styles */
 body {
     font-family: "Starbucks Font";
-    font-size: 8px;
+    font-size: 8px; /* Consider using rem or em units */
     color: #000;
     background-color: #E3E0D9;
     margin: 0;
@@ -81,6 +81,7 @@ hr {
     letter-spacing: 1px;
 }
 
+/* Spacing */
 .emptySpace {
     height: 40px;
 }
@@ -158,6 +159,7 @@ hr {
     top: 332px;
 }
 
+/* Extra Spacing */
 .emptySpace2 {
     height: 20px;
 }
@@ -204,6 +206,8 @@ hr {
     color: #000000be;
     font-weight: bolder;
     margin-top: -4px;
+    line-height: 1.5;
+    white-space: pre-wrap;
 }
 
 .arrowSideScreen {
