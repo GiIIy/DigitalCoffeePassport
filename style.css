@@ -13,6 +13,11 @@
     font-style: normal;
 }
 
+:root {
+    touch-action: pan-x pan-y;
+    height: 100% 
+  }
+
 /* General Body Styles */
 body {
     font-family: "Starbucks Font";
