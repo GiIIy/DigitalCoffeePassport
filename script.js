@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    
     let currentIndex = 0; // Track the current coffee index
     let coffees = []; // Array to store coffee data
 
@@ -232,5 +231,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    
+    // Keyboard Handling for Mobile Layout Issues
+    if (notesTextarea) {
+        notesTextarea.addEventListener('focus', () => {
+            // Prevent the page from scrolling when the keyboard appears
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        });
+
+        notesTextarea.addEventListener('blur', () => {
+            // Restore the page scrolling when the keyboard disappears
+            document.body.style.position = '';
+            document.body.style.width = '';
+        });
+    }
 });
