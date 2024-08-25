@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    
     let currentIndex = 0; // Track the current coffee index
     let coffees = []; // Array to store coffee data
 
@@ -140,6 +142,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Define the functions for changing coffee selection
+    function changeCoffeeLeft() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : coffees.length - 1; // Go to previous coffee or wrap around
+        displayCoffee(coffees[currentIndex]);
+        loadNotes(coffees[currentIndex].id); // Load notes for the new coffee
+    }
+
+    function changeCoffeeRight() {
+        currentIndex = (currentIndex < coffees.length - 1) ? currentIndex + 1 : 0; // Go to next coffee or wrap around
+        displayCoffee(coffees[currentIndex]);
+        loadNotes(coffees[currentIndex].id); // Load notes for the new coffee
+    }
+
+    // Set up event listeners for the buttons
+    document.getElementById('prevCoffee').addEventListener('click', changeCoffeeLeft);
+    document.getElementById('nextCoffee').addEventListener('click', changeCoffeeRight);
+
     document.addEventListener('keydown', handleArrowKeys);
 
     // Swipe Detection Variables
@@ -212,4 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    
 });
