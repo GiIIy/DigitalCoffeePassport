@@ -1,6 +1,7 @@
 {
     "coffees": [
       {
+        "id": "veranda-blend",
         "name": "Veranda Blend",
         "description1": "Subtle with delicate nuances of ",
         "description2": "soft cocoa and lightly toasted nuts.",
@@ -17,6 +18,7 @@
         "endInformation4": "It’s balanced and flavorful without being overly bold."
       },
       {
+        "id": "colombia-narino",
         "name": "Colombia Nariño",
         "description1": "Elegant with herbal notes and a walnutlike",
         "description2": "finish unique to Colombia's Nariño region.",
@@ -32,6 +34,7 @@
         "endInformation3": "ideal environment for this premium coffee to thrive."
       },
       {
+        "id": "pike-place-roast",
         "name": "Pike Place Roast",
         "description1": "Well-rounded with subtle notes of",
         "description2": "cocoa and toasted nuts balancing",
@@ -48,6 +51,7 @@
         "endInformation3":"Delicious served with cream and sugar."
       },
       {
+        "id": "kenya",
         "name": "Kenya",
         "description1": "Unmistakable notes of grapefruit and",
         "description2": "black currant found in no other origin.",
@@ -65,6 +69,7 @@
         "endInformation5": "and customers alike with refined layers of flavor."
       },
       {
+        "id": "guatemala-antigua",
         "name": "Guatemala Antigua",
         "description1": "Elegant and refined with layers of",
         "description2": "unfolding flavor—notes of lemon,",
@@ -83,6 +88,7 @@
         "endInformation5": "experts love this coffee’s consistency and taste in cup."
       },
       {
+        "id": "ethiopia",
         "name": "Ethiopia",
         "description1": "Soft and velvety with notes of",
         "description2": "dark chocolate, peppery spice",
@@ -99,6 +105,7 @@
         "endInformation3": "with family and friends through daily coffee rituals."
       },
       {
+        "id": "house-blend",
         "name": "House Blend",
         "description1": "Aroma, body and flavor all in",
         "description2": "balance—with tastes of nuts and",
@@ -116,6 +123,7 @@
         "endInformation4": " popular coffees."
       },
       {
+        "id": "sumatra",
         "name": "Sumatra",
         "description1": "Full-bodied with a smooth mouthfeel",
         "description2": "and lingering herbal notes.",
@@ -132,6 +140,7 @@
         "endInformation4": "independent farms, often the farmer’s backyard."
       },
       {
+        "id": "caffee-verona",
         "name": "Caffe Verona",
         "description1": "Well-balanced and rich with",
         "description2": "a dark cocoa texture",
@@ -150,6 +159,7 @@
         "endInformation6": "a customer favorite."
       },
       {
+        "id": "espresso-roast",
         "name": "Espresso Roast",
         "description1": "Intense, caramelly sweet and perfect with",
         "description2": "steamed milk. Delicious as brewed coffee too.",
