@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('No coffee data available');
             return;
         }
-    
+
         // Select elements
         const coffeeNameH1 = document.querySelector('.coffeeName');
         const coffeeDescriptionP = document.querySelectorAll('.coffeeDescription p');
@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const roastGraphP = document.querySelector('.coffeeInfoRightSide .blockInfo:nth-of-type(1) .roastGraph p');
         const foodPairingsDiv = document.querySelector('.coffeeInfoRightSide .blockInfo:nth-of-type(3) .coffeeInfoContent');
         const endInfoDiv = document.querySelector('.endCoffeeInfomation');
-    
+
         // Debugging logs
         console.log('Displaying coffee:', coffee);
-    
+
         // Update the coffee name
         if (coffeeNameH1) {
             const nameParts = coffee.name.split(' ');
@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const secondName = nameParts.slice(1).join(' ') || '';
             coffeeNameH1.innerHTML = `<h1>${firstName.toUpperCase()}</h1><h1>${secondName.toUpperCase()}</h1>`;
         }
-    
+
         // Update the coffee descriptions
         if (coffeeDescriptionP.length > 0) {
             coffeeDescriptionP[0].textContent = coffee.description1 || '';
             coffeeDescriptionP[1].textContent = coffee.description2 || '';
-    
+
             if (coffee.description3) {
                 coffeeDescriptionP[2].textContent = coffee.description3;
                 coffeeDescriptionP[2].style.display = 'block'; // Ensure visibility
@@ -65,39 +65,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 coffeeDescriptionP[2].style.display = 'none'; // Hide if not needed
             }
         }
-    
+
         // Update the coffee information
         if (flavourNotesP1 && flavourNotesP2) {
-            if (coffee.flavourNotes) {
-                const [flavourNotePart1, flavourNotePart2] = coffee.flavourNotes.split('&').map(part => part.trim());
-                flavourNotesP1.innerHTML = flavourNotePart1 ? flavourNotePart1.toUpperCase() : '';
-                flavourNotesP2.innerHTML = flavourNotePart2 ? `& ${flavourNotePart2.toUpperCase()}` : '';
-            } else {
-                flavourNotesP1.innerHTML = '';
-                flavourNotesP2.innerHTML = '';
-            }
+            // Ensure flavour notes are split properly and without overlap
+            const [flavourNotePart1, flavourNotePart2] = coffee.flavourNotes.split('&').map(part => part.trim());
+            flavourNotesP1.innerHTML = flavourNotePart1 ? flavourNotePart1.toUpperCase() : '';
+            flavourNotesP2.innerHTML = flavourNotePart2 ? `& ${flavourNotePart2.toUpperCase()}` : '';
         }
-        if (growingRegionP) growingRegionP.textContent = coffee.growingRegion ? coffee.growingRegion.toUpperCase() : '';
-        if (bodyP) bodyP.textContent = coffee.body ? coffee.body.toUpperCase() : '';
-        if (acidityP) acidityP.textContent = coffee.acidity ? coffee.acidity.toUpperCase() : '';
-        if (processingP) processingP.textContent = coffee.processing ? coffee.processing.toUpperCase() : '';
-        if (roastGraphP) roastGraphP.textContent = coffee.roast ? coffee.roast.toUpperCase() : '';
-    
+        if (growingRegionP) growingRegionP.textContent = coffee.growingRegion.toUpperCase() || '';
+        if (bodyP) bodyP.textContent = coffee.body.toUpperCase() || '';
+        if (acidityP) acidityP.textContent = coffee.acidity.toUpperCase() || '';
+        if (processingP) processingP.textContent = coffee.processing.toUpperCase() || '';
+        if (roastGraphP) roastGraphP.textContent = coffee.roast.toUpperCase() || '';
+
         // Update the food pairings with a comma on the first line
         if (foodPairingsDiv) {
-            if (coffee.foodPairings) {
-                const pairings = coffee.foodPairings.split(',').map(pair => pair.trim()).filter(pair => pair);
-                foodPairingsDiv.innerHTML = pairings.map((pairing, index) => {
-                    if (index === 0) {
-                        return `<p>${pairing.toUpperCase()},</p>`;
-                    }
-                    return `<p>${pairing.toUpperCase()}</p>`;
-                }).join('');
-            } else {
-                foodPairingsDiv.innerHTML = ''; // Clear if no food pairings are available
-            }
+            const pairings = coffee.foodPairings.split(',').map(pair => pair.trim()).filter(pair => pair);
+            foodPairingsDiv.innerHTML = pairings.map((pairing, index) => {
+                if (index === 0) {
+                    return `<p>${pairing.toUpperCase()},</p>`;
+                }
+                return `<p>${pairing.toUpperCase()}</p>`;
+            }).join('');
         }
-    
+
         // Update the end information with line breaks
         if (endInfoDiv) {
             const endInfoParts = [
@@ -111,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             endInfoDiv.innerHTML = endInfoParts.join('<br>');
         }
     }
-    
 
     // Local Storage Functions
     const notesTextarea = document.getElementById('notes');

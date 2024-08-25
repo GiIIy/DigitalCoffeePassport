@@ -242,12 +242,20 @@ hr {
     width: 100%; /* Full width of the container */
     height: 100%; /* Full height of the container */
     box-sizing: border-box; /* Includes padding in width/height calculations */
-    resize: none; /* Disables resizing for a consistent layout */
     overflow: hidden; /* Hides any overflow */
     font-size: 12px;
     font-family: 'Starbucks Font Light';
     font-weight: 1000;
     color: #BC8D5E;
+    resize: none; /* Prevents resizing */
+    /*fixing problem with mobile devices where when you click on the textarea goes up the page*/
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap;
+    
 }
 
 .emptySpace3 {
