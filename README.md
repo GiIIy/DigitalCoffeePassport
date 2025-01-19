@@ -44,8 +44,8 @@ This project is open-source and available under the [MIT License](LICENSE).
 ---
 
 ### **Author**
-[Jayden Gill]  
-[https://github.com/GiIIy]  
-[jaydengill.dev@gmail.com]
+Jayden Gill  
+https://github.com/GiIIy  
+jaydengill.dev@gmail.com
 
 ---
