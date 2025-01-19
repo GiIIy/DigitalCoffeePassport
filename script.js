@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     let currentIndex = 0; // Track the current coffee index
     let coffees = []; // Array to store coffee data
 
@@ -10,11 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
             coffees = data.coffees;
-            if (coffees.length > 0) {
-                displayCoffee(coffees[currentIndex]); // Display the first coffee
-                loadNotes(coffees[currentIndex].id); // Load notes for the initial coffee
+
+            // Get the 'id' from the URL if available
+            const urlParams = new URLSearchParams(window.location.search);
+            const coffeeIdFromUrl = urlParams.get('id'); // Get 'id' from URL
+
+            if (coffeeIdFromUrl) {
+                // Find the coffee from the URL
+                const selectedCoffee = coffees.find(coffee => coffee.id === coffeeIdFromUrl);
+                if (selectedCoffee) {
+                    currentIndex = coffees.indexOf(selectedCoffee); // Set currentIndex based on the selected coffee
+                    displayCoffee(selectedCoffee); // Display the selected coffee
+                } else {
+                    displayCoffee(coffees[0]); // If not found, show the first coffee
+                }
             } else {
-                console.error('No coffee data available');
+                displayCoffee(coffees[0]); // Default to first coffee if no id in URL
             }
         } catch (error) {
             console.error('Error fetching coffee data:', error);
@@ -28,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Select elements
+        // Select elements and update content for the coffee
         const coffeeNameH1 = document.querySelector('.coffeeName');
         const coffeeDescriptionP = document.querySelectorAll('.coffeeDescription p');
         const flavourNotesP1 = document.querySelector('.coffeeInfoLeftSide .blockInfo:nth-of-type(1) .coffeeInfoContent p:nth-of-type(1)');
@@ -101,6 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ].filter(Boolean);
             endInfoDiv.innerHTML = endInfoParts.join('<br>');
         }
+
+        // Update the URL to reflect the current coffee's ID
+        window.history.pushState({}, "", `index.html?id=${coffee.id}`);
     }
 
     // Local Storage Functions
@@ -245,4 +258,18 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.width = '';
         });
     }
+
+    // Hamburger Menu Logic
+    const hamburger = document.getElementById('hamburger');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    // Toggle the hamburger menu
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active'); // Add/remove active class for the hamburger
+        dropdownMenu.classList.toggle('active'); // Show/hide the dropdown menu
+    });
+
+    
+
+    
 });

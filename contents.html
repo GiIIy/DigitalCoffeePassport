@@ -1,0 +1,203 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contents Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General body styles */
+        body {
+            font-family: "Starbucks Font";
+            font-size: 8px;
+            color: #000;
+            background-color: #E3E0D9;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Ensure the container takes up the full height and can scroll */
+        .contents-container {
+            padding: 20px;
+            min-height: 100vh; /* Make the container at least as tall as the viewport */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column; /* Stack the content vertically */
+            overflow-y: auto; /* Allow vertical scrolling */
+        }
+
+        /* Scroll behavior for mobile */
+        @media screen and (max-width: 750px) {
+            body {
+                overflow-y: auto; /* Enable vertical scrolling */
+            }
+
+            .contents-container {
+                height: auto; /* Allow the container to grow with the content */
+                overflow-y: auto; /* Enable scrolling if content overflows */
+            }
+        }
+
+        /* Search bar and buttons */
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #BC8D5E;
+            border-radius: 5px;
+        }
+
+        .coffee-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .coffee-item {
+            padding: 15px;
+            border: 1px solid #BC8D5E;
+            border-radius: 5px;
+            background-color: #E3E0D9;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .coffee-item:hover {
+            background-color: #d1c7b8;
+        }
+
+        .coffee-item h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #BC8D5E;
+        }
+
+        .coffee-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .filter-buttons {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #BC8D5E;
+            color: #fff;
+            font-family: "Starbucks Font Light";
+            font-weight: bold;
+        }
+
+        .filter-buttons button:hover {
+            background-color: #a87d56;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="contents-container">
+        <h1>Coffee Passport Contents</h1>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search for a coffee...">
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button data-roast="all">All</button>
+            <button data-roast="Blonde">Blonde Roast</button>
+            <button data-roast="Medium">Medium Roast</button>
+            <button data-roast="Dark">Dark Roast</button>
+        </div>
+
+        <!-- Coffee List -->
+        <div class="coffee-list" id="coffeeList">
+            <!-- Coffee items will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Load the coffee data
+        let coffees = [];
+
+        // Fetch coffee data from the JSON file
+        async function fetchCoffeeData() {
+            try {
+                const response = await fetch('./coffees.json');
+                if (!response.ok) throw new Error('Failed to fetch coffee data');
+                const data = await response.json();
+                coffees = data.coffees;
+                displayCoffees(coffees); // Display all coffees initially
+            } catch (error) {
+                console.error('Error fetching coffee data:', error);
+                document.getElementById('coffeeList').innerHTML = '<p style="color:red;">Failed to load coffee data. Please try again later.</p>';
+            }
+        }
+
+        // Display coffee list dynamically
+        function displayCoffees(filteredCoffees) {
+            const coffeeList = document.getElementById('coffeeList');
+            coffeeList.innerHTML = ''; // Clear existing items
+
+            filteredCoffees.forEach(coffee => {
+                const coffeeItem = document.createElement('div');
+                coffeeItem.className = 'coffee-item';
+                coffeeItem.setAttribute('data-id', coffee.id);
+
+                coffeeItem.innerHTML = `
+                    <h3>${coffee.name}</h3>
+                    <p>${coffee.description1} ${coffee.description2}</p>
+                `;
+
+                // Add click event to navigate to coffee detail page
+                coffeeItem.addEventListener('click', () => {
+                    window.location.href = `index.html?id=${coffee.id}`;
+                });
+
+                coffeeList.appendChild(coffeeItem);
+            });
+        }
+
+        // Filter coffees by roast type
+        function filterCoffees(roastType) {
+            if (roastType === 'all') {
+                displayCoffees(coffees);
+            } else {
+                const filtered = coffees.filter(coffee => coffee.roast.toLowerCase() === roastType.toLowerCase());
+                displayCoffees(filtered);
+            }
+        }
+
+        // Add event listeners to filter buttons
+        document.querySelectorAll('.filter-buttons button').forEach(button => {
+            button.addEventListener('click', () => {
+                const roastType = button.getAttribute('data-roast');
+                filterCoffees(roastType);
+            });
+        });
+
+        // Add search functionality
+        document.getElementById('search').addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const filtered = coffees.filter(coffee => coffee.name.toLowerCase().includes(searchTerm));
+            displayCoffees(filtered);
+        });
+
+        // Fetch and display data on page load
+        fetchCoffeeData();
+    </script>
+</body>
+
+</html>

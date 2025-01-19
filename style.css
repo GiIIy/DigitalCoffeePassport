@@ -295,6 +295,70 @@ button:hover {
     background-color: #a87d56;
 }
 
+/* Hamburger button (three lines) */
+.hamburger-container {
+    position: fixed; /* Fixed to the top-right corner */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+}
+
+.hamburger .line {
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 30px; /* Adjust position below the hamburger icon */
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 5px;
+    text-align: left;
+    padding-right: 80px;
+}
+
+.dropdown-menu li {
+    margin: 10px 0;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Starbucks Font Light';
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.dropdown-menu a:hover {
+    color: #4CAF50; /* Hover color */
+}
+
+/* Toggle visibility of the dropdown when hamburger is clicked */
+.hamburger.active + .dropdown-menu {
+    display: block;
+}
+
+
 /* Responsive Design */
 @media screen and (max-width: 750px) and (max-height: 700px) {
     body {
