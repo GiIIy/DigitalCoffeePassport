@@ -231,43 +231,6 @@ hr {
     margin-bottom: 10px;
 }
 
-/* Notes Textarea Styles */
-.notes {
-    border: none; /* Removes the default border */
-    background-attachment: local; /* Ensures the background scrolls with the text */
-    background-color: transparent; /* Makes the background transparent */
-    background-image: repeating-linear-gradient(#BC8D5E, #BC8D5E 1px, transparent 1px, transparent 31px); /* Lines in the specified color */
-    line-height: 31px; /* Space between lines matching the height of the gradient */
-    padding: 0; /* Removes padding inside the textarea */
-    width: 100%; /* Full width of the container */
-    height: 100%; /* Full height of the container */
-    box-sizing: border-box; /* Includes padding in width/height calculations */
-    overflow: hidden; /* Hides any overflow */
-    font-size: 12px;
-    font-family: 'Starbucks Font Light';
-    font-weight: 1000;
-    color: #BC8D5E;
-    resize: none; /* Prevents resizing */
-    
-}
-
-.emptySpace3 {
-    height: 300px;
-}
-
-/* Notes Text Styles */
-.noteText {
-    font-size: 8px;
-    font-family: 'Starbucks Font Light';
-    font-weight: 1000;
-    color: #BC8D5E;
-}
-
-.notes:focus {
-    outline: none; /* Remove default focus outline */
-}
-
-
 /* Button Container Styles */
 .buttonContainer {
     position: fixed;
@@ -383,6 +346,135 @@ button:hover {
 /* Toggle visibility of the dropdown when hamburger is clicked */
 .hamburger.active + .dropdown-menu {
     display: block;
+}
+
+/* My Tasting Notes Section */
+.myTastingNotes h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #BC8D5E;
+    text-transform: uppercase; /* Make the text all caps */
+    margin-top: 76px; /* Add space from the top to avoid it being too close to the buttons */
+}
+
+/* 2x2 Columns for Aroma, Acidity, Body, Flavour */
+.tastingColumns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns */
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+/* Each individual column styling */
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column label {
+    text-transform: uppercase; /* Make the text all caps */
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    
+}
+
+.column select {
+    width: 100%; /* Full width */
+    padding: 10px 15px; /* Padding for better spacing */
+    border: 1px solid #BC8D5E; /* Brown border for consistency with the theme */
+    border-radius: 5px; /* Rounded corners for a modern feel */
+    font-family: 'Starbucks Font Light', sans-serif; /* Consistent font */
+    font-size: 14px; /* Readable text size */
+    background-color: #f7f3e1; /* Light beige background for contrast */
+    color: #333; /* Dark text for good readability */
+    box-sizing: border-box; /* Ensures padding is included in the width and height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effects */ 
+    resize: vertical;
+    font-style: italic; /* Italic placeholder text */
+    color: #BC8D5E; /* Placeholder text color */
+}
+
+
+/* Tasting Details Section */
+.tastingDetails {
+    display: flex;
+    gap: 10px;    
+    
+}
+
+.detailColumn {
+    flex: 1;
+}
+
+.detailColumn h4 {
+    text-transform: uppercase; /* Make the text all caps */
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+.detailColumn input {
+    width: 100%; /* Full width */
+    padding: 10px 15px; /* Padding for better spacing */
+    border: 1px solid #BC8D5E; /* Brown border for consistency with the theme */
+    border-radius: 5px; /* Rounded corners for a modern feel */
+    font-family: 'Starbucks Font Light', sans-serif; /* Consistent font */
+    font-size: 14px; /* Readable text size */
+    background-color: #f7f3e1; /* Light beige background for contrast */
+    box-sizing: border-box; /* Ensures padding is included in the width and height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effects */ 
+    resize: vertical;
+    font-style: italic; /* Italic placeholder text */
+    color: #BC8D5E; /* Placeholder text color */
+}
+
+/* detail column placeholder text */
+.detailColumn input::placeholder {
+    font-style: italic; /* Italic placeholder text */
+    color: #BC8D5E; /* Placeholder text color */
+}
+
+.learnedAbout {
+    text-transform: uppercase; /* Make the text all caps */
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+.additionalThoughts {
+    text-transform: uppercase; /* Make the text all caps */
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Notes Textarea Styles */
+.singleLineText {
+    width: 100%; /* Full width */
+    height: 120px; /* Adjust height */
+    padding: 12px 15px; /* Padding for better spacing */
+    border: 1px solid #BC8D5E; /* Brown border for consistency with the theme */
+    border-radius: 5px; /* Rounded corners for a modern feel */
+    font-family: 'Starbucks Font Light', sans-serif; /* Consistent font */
+    font-size: 14px; /* Readable text size */
+    line-height: 1.5; /* Better line spacing for readability */
+    background-color: #f7f3e1; /* Light beige background for contrast */
+    color: #333; /* Dark text for good readability */
+    box-sizing: border-box; /* Ensures padding is included in the width and height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effects */ 
+    height: 50px;
+    resize: vertical;
+}
+
+.singleLineText::placeholder {
+    font-style: italic; /* Italic placeholder text */
+    color: #BC8D5E; /* Placeholder text color */
+}
+
+
+.singleLineText:focus {
+    border-color: #a87d56; /* Slight change in border color on hover */
 }
 
 
