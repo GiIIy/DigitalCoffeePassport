@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to fetch coffee data from JSON file
     async function fetchCoffee() {
         try {
-            const response = await fetch('coffees.json');
+            const response = await fetch('../coffees.json');
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
             coffees = data.coffees;

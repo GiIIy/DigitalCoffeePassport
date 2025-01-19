@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contents Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         /* General body styles */
         body {
@@ -135,7 +135,7 @@
         // Fetch coffee data from the JSON file
         async function fetchCoffeeData() {
             try {
-                const response = await fetch('./coffees.json');
+                const response = await fetch('../coffees.json');
                 if (!response.ok) throw new Error('Failed to fetch coffee data');
                 const data = await response.json();
                 coffees = data.coffees;
