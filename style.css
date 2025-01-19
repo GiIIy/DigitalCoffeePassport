@@ -309,12 +309,39 @@ button:hover {
     justify-content: space-between;
     width: 30px;
     height: 20px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    transition: all 0.3s ease; /* Smooth transition for the transformation */
+}
+
+.hamburger:hover{
+    background-color: transparent;
 }
 
 .hamburger .line {
     height: 4px;
     width: 100%;
     border-radius: 2px;
+    background-color: #BC8D5E; /* Set the color of the lines */
+    transition: all 0.3s ease; /* Smooth transition for the lines */
+}
+
+/* Add active state to animate lines into a cross */
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 9px;
+}
+
+.hamburger.active .line:nth-child(2) {
+    opacity: 0; /* Hide the middle line */
+}
+
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 7px;
 }
 
 /* Dropdown menu styles */
@@ -357,6 +384,8 @@ button:hover {
 .hamburger.active + .dropdown-menu {
     display: block;
 }
+
+
 
 
 /* Responsive Design */

@@ -259,17 +259,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hamburger Menu Logic
+    // Select the hamburger button and dropdown menu
     const hamburger = document.getElementById('hamburger');
     const dropdownMenu = document.getElementById('dropdown-menu');
 
-    // Toggle the hamburger menu
+    // Add click event to the hamburger button
     hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active'); // Add/remove active class for the hamburger
-        dropdownMenu.classList.toggle('active'); // Show/hide the dropdown menu
+        // Toggle active class on the hamburger for animation
+        hamburger.classList.toggle('active');
+
+        // Toggle the visibility of the dropdown menu
+        dropdownMenu.style.display =
+            dropdownMenu.style.display === 'block' ? 'none' : 'block';
     });
 
-    
-
-    
 });
