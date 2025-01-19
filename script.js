@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Update the URL to reflect the current coffee's ID
-        window.history.pushState({}, "", `index.html?id=${coffee.id}`);
+        window.history.pushState({}, "", `coffeePages.html?id=${coffee.id}`);
     }
 
     // Local Storage Functions

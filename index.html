@@ -3,174 +3,118 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maxium-scale=1.0., user-scalable=no">
-    <title>Veranda Blend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Starbucks Font', sans-serif;
+            background-color: #E3E0D9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .login-container h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #BC8D5E;
+        }
+
+        .input-field {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+            border: 1px solid #BC8D5E;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            background-color: #BC8D5E;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #a87d56;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+            text-align: center;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: #BC8D5E;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="login-container">
+        <h1>Login</h1>
 
-    <div class="container">
-        <!-- Left Page Content -->
-        <div class="leftPage">
-            <!-- Title Section -->
-            <div class="titles">
-                <h2>STARBUCKS</h2>
-                <div class="coffeeName">
-                    <h1>COFFEE NAME</h1>
-                    <h1>SECOND NAME</h1>
-                </div>
-                <div class="coffeeDescription">
-                    <p>LINE 1</p>
-                    <p>LINE 2</p>
-                    <p>LINE 3</p>
-                </div>
-                <div class="emptySpace"></div>
-                <hr>
-            </div>
+        <!-- Error Message -->
+        <div class="error-message" id="error-message">Invalid username or password.</div>
 
-            <!-- Coffee Information Section -->
-            <div class="coffeeInfo">
-                <div class="coffeeInfoLeftSide">
-                    <!-- Flavour Notes -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">FLAVOUR NOTES</h3>
-                        <div class="coffeeInfoContent">
-                            <p>FLAVOUR NOTE 1</p>
-                            <p>FLAVOUR NOTE 2</p>
-                        </div>
-                    </div>
+        <!-- Login Form -->
+        <form id="login-form">
+            <input type="text" id="username" class="input-field" placeholder="Username" required>
+            <input type="password" id="password" class="input-field" placeholder="Password" required>
+            <button type="submit" class="login-button">Login</button>
+        </form>
 
-                    <!-- Growing Region -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">GROWING REGION</h3>
-                        <div class="coffeeInfoContent">
-                            <p>REGION</p>
-                            <img src="images/latinAmerica.png" alt="latinAmerica" style="width: 100px;">
-                        </div>
-                    </div>
-
-                    <!-- Body -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">BODY</h3>
-                        <div class="coffeeInfoContent">
-                            <p>BODY</p>
-                        </div>
-                    </div>
-
-                    <!-- Acidity -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">ACIDITY</h3>
-                        <div class="coffeeInfoContent">
-                            <p>ACIDITY</p>
-                        </div>
-                    </div>
-
-                    <!-- Processing -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">PROCESSING</h3>
-                        <div class="coffeeInfoContent">
-                            <p>METHOD</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="coffeeInfoRightSide">
-                    <!-- Roast -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">ROAST</h3>
-                        <div class="coffeeInfoContent">
-                            <img src="images/VerandaRoastGraph.png" alt="Roast Graph on Blonde" style="width: 200px;">
-                            <div class="roastGraph">
-                                <p>BLONDE</p>
-                                <p class="roastGraphTitle">MEDIUM</p>
-                                <p class="roastGraphTitle">DARK</p>
-                            </div>
-                            <div class="blondeDescription">
-                                
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="emptySpace2"></div>
-
-                    <!-- Food Pairings -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">FOOD PAIRINGS</h3>
-                        <div class="coffeeInfoContent">
-                            <p>FOOD 1</p>
-                            <p>FOOD 2</p>
-                        </div>
-                    </div>
-
-                    <!-- Brewing Method -->
-                    <div class="blockInfo">
-                        <h3 class="coffeeInfoTitle">BREWING METHOD</h3>
-                        <div class="coffeeInfoContent">
-                            <div class="brewingMethod" style="margin-top: -8px;">
-                                <div class="hollowCircle" data-state="empty"></div>
-                                <p class="brewingText">DRIP BREWER</p>
-                            </div>
-                            <div class="brewingMethod">
-                                <div class="hollowCircle" data-state="empty"></div>
-                                <p class="brewingText">POUR-OVER</p>
-                            </div>
-                            <div class="brewingMethod">
-                                <div class="hollowCircle" data-state="empty"></div>
-                                <p class="brewingText">PRESS</p>
-                            </div>
-                            <div class="brewingMethod">
-                                <div class="hollowCircle" data-state="empty"></div>
-                                <p class="brewingText">CLOVER BREWER</p>
-                            </div>
-                            <div class="brewingMethod" data-state="empty">
-                                <div class="hollowCircle"></div>
-                                <p class="brewingText">OTHER</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- End Screen Block -->
-            <div class="endScreenBlock">
-                <img src="images/arrowForInfomation.png" alt="arrowForInfomation" style="width: 70px;" class="arrowSideScreen">
-                <div class="endCoffeeInfomation">
-                    <p>LINE 1</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Page Content -->
-        <div class="rightPage">
-            <div class="emptySpace3"></div>
-            <p class="noteText">NOTES TO SHARE</p>
-            <textarea class="notes" id="notes"></textarea>
+        <!-- Forgot Password Link -->
+        <div class="forgot-password">
+            <a href="#">Forgot password?</a>
         </div>
     </div>
 
-     <!-- Buttons for switching coffees -->
-     <div class="buttonContainer">
-        <button id="prevCoffee">Previous</button>
-        <button id="nextCoffee">Next</button>
-    </div>
+    <script>
+        // Handle form submission
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form from submitting the default way
 
-    <div class="hamburger-container">
-        <button class="hamburger" id="hamburger">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </button>
-        <div class="dropdown-menu" id="dropdown-menu">
-            <ul>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="contents.html">Contents</a></li>
-                <!-- Optionally, add more items in the future -->
-            </ul>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Dummy check for login (you can replace this with real authentication logic later)
+            if (username === "user" && password === "password123") {
+                window.location.href = "contents.html"; // Redirect to homepage (or coffee page)
+            } else {
+                document.getElementById("error-message").style.display = "block"; // Show error message
+            }
+        });
+    </script>
 </body>
 
 </html>
