@@ -249,13 +249,19 @@ document.addEventListener('DOMContentLoaded', () => {
         notesTextarea.addEventListener('focus', () => {
             // Prevent the page from scrolling when the keyboard appears
             document.body.style.position = 'fixed';
+            document.body.style.top = `-${window.scrollY}px`;  // Save the current scroll position
             document.body.style.width = '100%';
         });
 
         notesTextarea.addEventListener('blur', () => {
             // Restore the page scrolling when the keyboard disappears
+            const scrollY = document.body.style.top;
             document.body.style.position = '';
+            document.body.style.top = '';
             document.body.style.width = '';
+
+            // Restore scroll position
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
         });
     }
 
