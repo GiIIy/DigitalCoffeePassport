@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (notesTextarea) {
         notesTextarea.addEventListener('focus', () => {
             // Prevent the page from scrolling when the keyboard appears
-            document.body.style.position = 'fixed';
+            document.body.style.position = 'relative';
             document.body.style.top = `-${window.scrollY}px`;  // Save the current scroll position
             document.body.style.width = '100%';
         });
