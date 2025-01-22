@@ -20,11 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (selectedCoffee) {
                     currentIndex = coffees.indexOf(selectedCoffee); // Set currentIndex based on the selected coffee
                     displayCoffee(selectedCoffee); // Display the selected coffee
+                    loadNotes(selectedCoffee.id); // Load notes for the selected coffee
                 } else {
                     displayCoffee(coffees[0]); // If not found, show the first coffee
+                    loadNotes(coffees[0].id); // Load notes for the first coffee
                 }
             } else {
                 displayCoffee(coffees[0]); // Default to first coffee if no id in URL
+                loadNotes(coffees[0].id); // Load notes for the first coffee
             }
         } catch (error) {
             console.error('Error fetching coffee data:', error);
@@ -117,27 +120,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Local Storage Functions
-    const notesTextarea = document.getElementById('notes');
+    const dateTastedOne = document.getElementById('dateTastedOne');
 
     // Load notes from local storage
     function loadNotes(coffeeId) {
-        if (!coffeeId || !notesTextarea) return;
+        if (!coffeeId || !dateTastedOne) return;
         const notes = localStorage.getItem(coffeeId);
-        notesTextarea.value = notes ? notes : '';
+        dateTastedOne.value = notes ? notes : '';
     }
 
     // Save notes to local storage
     function saveNotes() {
-        if (!coffees[currentIndex] || !notesTextarea) return;
+        if (!coffees[currentIndex] || !dateTastedOne) return;
         const coffeeId = coffees[currentIndex].id; // Use coffee ID for storage
-        const notes = notesTextarea.value;
+        const notes = dateTastedOne.value;
         localStorage.setItem(coffeeId, notes);
     }
 
     // Initial setup
     fetchCoffee().then(() => {
-        if (notesTextarea) {
-            notesTextarea.addEventListener('input', saveNotes);
+        if (dateTastedOne) {
+            dateTastedOne.addEventListener('input', saveNotes);
         }
     });
 
@@ -245,14 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Keyboard Handling for Mobile Layout Issues
-    if (notesTextarea) {
-        notesTextarea.addEventListener('focus', () => {
+    if (dateTastedOne) {
+        dateTastedOne.addEventListener('focus', () => {
             // Prevent the page from scrolling when the keyboard appears
             document.body.style.position = 'fixed';
             document.body.style.width = '100%';
         });
 
-        notesTextarea.addEventListener('blur', () => {
+        dateTastedOne.addEventListener('blur', () => {
             // Restore the page scrolling when the keyboard disappears
             document.body.style.position = '';
             document.body.style.width = '';

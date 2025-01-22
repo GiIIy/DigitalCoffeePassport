@@ -1,121 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Coffee Passport Home</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* General Styles */
         body {
+            overflow: auto; /* Allow scrolling */
+            padding-top: 80px; /* Adjust according to the header's height */
             font-family: 'Starbucks Font', sans-serif;
-            background-color: #E3E0D9;
             margin: 0;
+            padding: 0;
+            background-color: #E3E0D9;
+            color: #000;
+        }
+
+        /* Header Styles */
+        header {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: fixed; /* Fixes the header at the top */
+            top: 0; /* Ensure it's at the top of the page */
+            left: 0; /* Ensure it's aligned to the left */
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 10; /* Keep it above other content */
+            color: #fff;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px); /* Optional: adds a blur effect to the background */
+        }
+
+        header .logo {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        header nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            text-align: center;
+            background: url('assets/images/hero-image.jpg') no-repeat center center/cover;
+            color: #fff;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 0 20px;
         }
 
-        .login-container {
-            width: 300px;
-            margin: auto;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        .login-container h1 {
-            text-align: center;
-            font-size: 24px;
-            color: #BC8D5E;
-        }
-
-        .input-field {
-            width: 90%;
-            padding: 12px;
-            margin: 8px 0;
-            font-size: 16px;
-            border: 1px solid #BC8D5E;
-            border-radius: 5px;
-        }
-
-        .login-button {
-            background-color: #BC8D5E;
-            color: white;
-            border: none;
-            padding: 12px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent grey overlay */
+            z-index: 1;
         }
 
-        .login-button:hover {
+        .hero h1, .hero p, .hero .cta-button {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero .cta-button {
+            background-color: #BC8D5E;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .hero .cta-button:hover {
             background-color: #a87d56;
         }
 
-        .error-message {
-            color: red;
-            font-size: 14px;
-            display: none;
-            text-align: center;
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 40px; /* Increased gap for spacing */
+            padding: 60px 20px;
         }
 
-        .forgot-password {
-            font-size: 12px;
+        .feature {
+            background-color: #fff;
+            border: 1px solid #BC8D5E;
+            border-radius: 8px;
+            padding: 30px;
+            width: 320px; /* Slightly wider */
             text-align: center;
-            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
         }
 
-        .forgot-password a {
+        .feature h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
             color: #BC8D5E;
-            text-decoration: none;
         }
 
-        .forgot-password a:hover {
+        .feature p {
+            font-size: 14px;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 30px; /* Increased padding */
+            background-color: #BC8D5E;
+            color: #fff;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        footer .social-icons a:hover {
             text-decoration: underline;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #333; /* Dark background for the section */
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #BC8D5E;
+        }
+
+        /* Testimonials Section */
+        .testimonial-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden; /* Hide the overflowing testimonials */
+        }
+
+        .testimonial-wrapper {
+            display: flex;
+            width: 200%; /* Adjust this to ensure two testimonials are shown at a time */
+        }
+
+        .testimonial {
+            background-color: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-right: 20px; /* Space between cards */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            flex-shrink: 0; /* Prevent the cards from shrinking */
+            text-align: left;
+        }
+
+
+        .testimonial .quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .testimonial .author {
+            font-size: 20px; /* Make the author text larger */
+            font-weight: bold;
+            color: #BC8D5E;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero .cta-button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .testimonials h2 {
+                font-size: 24px;
+            }
+
+            .testimonial .quote {
+                font-size: 16px;
+            }
+
+            .testimonial .author {
+                font-size: 18px;
+            }
+
+            .testimonial-gallery {
+                width: 100%; /* Full width for the carousel */
+            }
         }
     </style>
 </head>
-
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
 
-        <!-- Error Message -->
-        <div class="error-message" id="error-message">Invalid username or password.</div>
+    <!-- Header -->
+    <header>
+        <div class="logo">Digital Coffee Passport</div>
+        <nav>
+            <a href="">Home</a>
+            <a href="pages/feedback.html">Feedback</a>
+            <a href="pages/login.html">Login</a>
+        </nav>
+    </header>
 
-        <!-- Login Form -->
-        <form id="login-form">
-            <input type="text" id="username" class="input-field" placeholder="Username" required>
-            <input type="password" id="password" class="input-field" placeholder="Password" required>
-            <button type="submit" class="login-button">Login</button>
-        </form>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Discover the World of Coffee</h1>
+        <p>Track, taste, and explore every blend in your passport.</p>
+        <a href="pages/login.html" class="cta-button">Start Exploring</a>
+    </section>
 
-        <!-- Forgot Password Link -->
-        <div class="forgot-password">
-            <a href="#">Forgot password?</a>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <h2>Personalized Notes</h2>
+            <p>Record your tasting experiences.</p>
         </div>
-    </div>
+        <div class="feature">
+            <h2>Guides & Tips</h2>
+            <p>Learn how to brew the perfect cup.</p>
+        </div>
+        <div class="feature">
+            <h2>Track Your Journey</h2>
+            <p>See your progress across blends.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+
+        <div class="testimonial-gallery">
+            <div class="testimonial-wrapper">
+                <div class="testimonial">
+                    <p class="quote">"The Coffee Passport has transformed how I approach coffee. I now appreciate every blend!"</p>
+                    <p class="author">- Coffee Enthusiast</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="quote">"A must-have tool for any coffee lover! It keeps track of my favorites and new discoveries."</p>
+                    <p class="author">- Coffee Explorer</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="quote">"I love how easy it is to keep track of my coffee journey. It's both fun and educational!"</p>
+                    <p class="author">- Coffee Aficionado</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="quote">"This has made my coffee tasting experience much more organized. Highly recommend!"</p>
+                    <p class="author">- Java Junkie</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Digital Coffee Passport. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="">Please Submit Feedback</a>
+        </div>
+    </footer>
 
     <script>
-        // Handle form submission
-        document.getElementById("login-form").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent form from submitting the default way
+        document.addEventListener('DOMContentLoaded', function () {
+        const testimonialWrapper = document.querySelector('.testimonial-wrapper');
+        const testimonials = document.querySelectorAll('.testimonial');
+        const totalTestimonials = testimonials.length;
+        const testWrapperWidth = testimonialWrapper.offsetWidth;
+        const testWidth = testimonials[0].offsetWidth + 20; // Including the margin
+        const scrollSpeed = 1; // Adjust this for speed, higher means slower
 
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+        let offset = 0;
 
-            // Dummy check for login (you can replace this with real authentication logic later)
-            if (username === "starbucks" && password === "coffee") {
-                window.location.href = "pages/contents.html"; // Redirect to homepage (contents)
-            } else {
-                document.getElementById("error-message").style.display = "block"; // Show error message
+        // Clone the testimonials to make it a continuous loop
+        testimonialWrapper.innerHTML += testimonialWrapper.innerHTML;
+
+        function animateTestimonials() {
+            offset += scrollSpeed;
+
+            // If the testimonials have moved enough, reset to start position
+            if (offset >= totalTestimonials * testWidth) {
+                offset = 0;
             }
-        });
+
+            // Apply the transform to create the scrolling effect
+            testimonialWrapper.style.transform = `translateX(-${offset}px)`;
+
+            // Call the function again for the next frame
+            requestAnimationFrame(animateTestimonials);
+        }
+
+        // Start the animation
+        animateTestimonials();
+    });
+
+
     </script>
 </body>
-
 </html>

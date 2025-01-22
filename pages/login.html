@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: 'Starbucks Font', sans-serif;
+            background-color: #E3E0D9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .login-container h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #BC8D5E;
+        }
+
+        .input-field {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+            border: 1px solid #BC8D5E;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            background-color: #BC8D5E;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #a87d56;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+            text-align: center;
+        }
+
+        .forgot-password {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: #BC8D5E;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+
+        <!-- Error Message -->
+        <div class="error-message" id="error-message">Invalid username or password.</div>
+
+        <!-- Login Form -->
+        <form id="login-form">
+            <input type="text" id="username" class="input-field" placeholder="Username" required>
+            <input type="password" id="password" class="input-field" placeholder="Password" required>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <!-- Forgot Password Link -->
+        <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form from submitting the default way
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Dummy check for login (you can replace this with real authentication logic later)
+            if (username === "starbucks" && password === "coffee") {
+                window.location.href = "contents.html"; // Redirect to homepage (contents)
+            } else {
+                document.getElementById("error-message").style.display = "block"; // Show error message
+            }
+        });
+    </script>
+</body>
+
+</html>
