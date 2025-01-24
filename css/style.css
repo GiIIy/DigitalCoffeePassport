@@ -553,11 +553,12 @@ button:hover {
 
     .instruction-position {
        position: relative;
-
+       bottom: 2%;
     }
+
     .swipe-instruction {
         position: absolute;
-        left: 40%;
+        left: 39%;
         display: flex;
         align-items: center;
         background-color: rgba(0, 0, 0, 0.7);
