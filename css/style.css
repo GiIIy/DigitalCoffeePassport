@@ -551,11 +551,13 @@ button:hover {
         margin-right: 10px;
     }
 
+    .instruction-position {
+       position: relative;
+
+    }
     .swipe-instruction {
-        position: fixed;
-        left: 35%;
-        bottom: 50px;
-        transform: translateX(-50%);
+        position: absolute;
+        left: 40%;
         display: flex;
         align-items: center;
         background-color: rgba(0, 0, 0, 0.7);
@@ -565,15 +567,13 @@ button:hover {
         font-size: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         z-index: 1000;
+        width: 200px;
     }
     
     .swipe-instruction .swipe-arrow {
         font-size: 24px;
         margin-right: 10px;
-    }
-
-    .
-    
+    }   
 }
 
 /* Larger screens */
