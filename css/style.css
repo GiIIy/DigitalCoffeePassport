@@ -554,7 +554,7 @@ button:hover {
     .swipe-instruction {
         position: fixed;
         left: 35%;
-        bottom: 20px;
+        bottom: 50px;
         transform: translateX(-50%);
         display: flex;
         align-items: center;
