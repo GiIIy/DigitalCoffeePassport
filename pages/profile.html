@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Font Face Definitions */
+        @font-face {
+            font-family: "Starbucks Font";
+            src: url("../assets/fonts/SoDoSans-Black.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Starbucks Font Light";
+            src: url("../assets/fonts/SoDoSans-Light.ttf") format("truetype");
+            font-weight: lighter;
+            font-style: normal;
+        }
+
+        body {
+            font-family: "Starbucks Font", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E3E0D9;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            flex-wrap: wrap; /* Allow items to wrap on small screens */
+            padding-top: 4rem; /* Add padding to the top */
+        }
+
+
+        .leftPage {
+            width: 30%;
+            margin-bottom: 2rem; /* For spacing when stacking */
+        }
+        .rightPage {
+            width: 65%;
+            margin-bottom: 2rem; /* For spacing when stacking */
+        }
+
+        /* Profile Section */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid black; /* Circular black border */
+            
+        }
+        .profile-name {
+            font-size: 2rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .profile-tagline {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            color: gray;
+        }
+
+        /* Profile Details Section */
+        .profile-details {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .details-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .info-section {
+            margin-bottom: 1rem;
+        }
+        .info-title {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.3rem;
+        }
+        .info-content {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Buttons */
+        .button-container {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        button {
+            background-color: #BC8D5E;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Starbucks Font Light';
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #a87d56;
+        }
+
+        /* Profile Stats Section */
+        .profile-stats {
+            margin-top: 2rem;
+        }
+        .stats-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .stats-item {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Change Profile Section */
+        .change-profile-section {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        .change-profile-section input[type="file"] {
+            padding: 0.5rem;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Hamburger button (three lines) */
+        .hamburger-container {
+            position: fixed; /* Fixed to the top-right corner */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            padding: 0;
+            transition: all 0.3s ease; /* Smooth transition for the transformation */
+        }
+
+        .hamburger:hover{
+            background-color: transparent;
+        }
+
+        .hamburger .line {
+            height: 4px;
+            width: 100%;
+            border-radius: 2px;
+            background-color: #BC8D5E; /* Set the color of the lines */
+            transition: all 0.3s ease; /* Smooth transition for the lines */
+        }
+
+        /* Add active state to animate lines into a cross */
+        .hamburger.active .line:nth-child(1) {
+            transform: rotate(45deg);
+            position: relative;
+            top: 9px;
+        }
+
+        .hamburger.active .line:nth-child(2) {
+            opacity: 0; /* Hide the middle line */
+        }
+
+        .hamburger.active .line:nth-child(3) {
+            transform: rotate(-45deg);
+            position: relative;
+            bottom: 7px;
+        }
+
+        /* Dropdown menu styles */
+        .dropdown-menu {
+            display: none; /* Hide by default */
+            position: absolute;
+            top: 30px; /* Adjust position below the hamburger icon */
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 5px;
+            text-align: left;
+            padding-right: 80px;
+        }
+
+        .dropdown-menu li {
+            margin: 10px 0;
+        }
+
+        .dropdown-menu a {
+            text-decoration: none;
+            color: #000;
+            font-family: 'Starbucks Font Light';
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .dropdown-menu a:hover {
+            color: #4CAF50; /* Hover color */
+        }
+
+        /* Toggle visibility of the dropdown when hamburger is clicked */
+        .hamburger.active + .dropdown-menu {
+            display: block;
+        }
+
+
+        /* Media Queries for Mobile Devices */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .leftPage, .rightPage {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .profile-name {
+                font-size: 1.6rem; /* Adjusting the font size for smaller screens */
+            }
+
+            .profile-tagline {
+                font-size: 0.9rem; /* Adjusting tagline size */
+            }
+
+            .profile-details {
+                padding: 1rem;
+            }
+
+            .details-title {
+                font-size: 1.4rem;
+            }
+
+            .info-title {
+                font-size: 0.9rem;
+            }
+
+            .info-content {
+                font-size: 1rem;
+            }
+
+            .button-container button {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .stats-title {
+                font-size: 1rem;
+            }
+
+            .stats-item {
+                font-size: 0.9rem;
+            }
+
+            .change-profile-section {
+                flex-direction: column;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="leftPage">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <img src="../assets/images/profilePic.jpg" alt="Profile Image" class="profile-img">
+                    <h1 class="profile-name">John Doe</h1>
+                    <p class="profile-tagline">Coffee Enthusiast | Web Developer</p>
+                </div>
+            </div>
+
+            <!-- Profile Details Section -->
+            <div class="rightPage">
+                <div class="profile-details">
+                    <h2 class="details-title">Profile Details</h2>
+
+                    <div class="profile-info">
+                        <div class="info-section">
+                            <h3 class="info-title">Username</h3>
+                            <p class="info-content">johndoe123</p>
+                        </div>
+                        <div class="info-section">
+                            <h3 class="info-title">Email</h3>
+                            <p class="info-content">johndoe@email.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Profile Stats Section -->
+                    <div class="profile-stats">
+                        <h3 class="stats-title">My Stats</h3>
+                        <div class="stats-item">
+                            <p><strong>Coffee Tasting Notes:</strong> 15</p>
+                        </div>
+                        <div class="stats-item">
+                            <p><strong>Coffee Mastery Level:</strong> Expert</p>
+                        </div>
+                    </div>
+
+                    <!-- Change Profile Picture Section -->
+                    <div class="change-profile-section">
+                        <label for="profile-pic" class="button-container">
+                            <button>Change Profile Picture</button>
+                            <input type="file" id="profile-pic" style="display:none;" accept="image/*">
+                        </label>
+                    </div>
+
+                    <!-- Button Section for Password Change -->
+                    <div class="button-container">
+                        <button>Change Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hamburger-container">
+        <button class="hamburger" id="hamburger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="contents.html">Contents</a></li>
+                <!-- Optionally, add more items in the future -->
+            </ul>
+        </div>
+    </div>
+
+<script>
+    // Toggle the active class for the hamburger button
+    document.getElementById("hamburger").addEventListener("click", function() {
+        this.classList.toggle("active");
+    });
+</script>
+</body>
+</html>
