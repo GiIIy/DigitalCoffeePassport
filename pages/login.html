@@ -110,11 +110,16 @@
 
             // Dummy check for login (you can replace this with real authentication logic later)
             if (username === "starbucks" && password === "coffee") {
-                window.location.href = "contents.html"; // Redirect to homepage (contents)
+                // Set login status in localStorage
+                localStorage.setItem("isLoggedIn", "true");
+
+                // Redirect to homepage (contents)
+                window.location.href = "contents.html"; // Adjust based on your actual file path
             } else {
                 document.getElementById("error-message").style.display = "block"; // Show error message
             }
         });
+
     </script>
 </body>
 

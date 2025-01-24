@@ -46,7 +46,7 @@
                         <h3 class="coffeeInfoTitle">GROWING REGION</h3>
                         <div class="coffeeInfoContent">
                             <p>REGION</p>
-                            <img src="../assets/images/latinAmerica.png" alt="latinAmerica" style="width: 100px;">
+                            <img src="../assets/images/latinAmerica.png" alt="latinAmerica" style="width: 120px;">
                         </div>
                     </div>
 
@@ -139,6 +139,14 @@
                     <p>LINE 1</p>
                 </div>
             </div>
+
+            <div class="swipe-instruction">
+                <span class="swipe-arrow">👉</span>
+                <p>Swipe right to take notes</p>
+            </div>
+            
+            
+
         </div>
 
         <!-- Right Page Content -->
@@ -191,20 +199,20 @@
                     <div class="detailColumn">
                         <h4>Date Tasted</h4>
                         <input type="text" placeholder="Enter date" id="dateTastedOne">
-                        <input type="text" placeholder="Enter date">
-                        <input type="text" placeholder="Enter date">
+                        <input type="text" placeholder="Enter date" id="dateTastedTwo">
+                        <input type="text" placeholder="Enter date" id="dateTastedThree">
                     </div>
                     <div class="detailColumn">
                         <h4>Brew Method</h4>
-                        <input type="text" placeholder="Enter brew method">
-                        <input type="text" placeholder="Enter brew method">
-                        <input type="text" placeholder="Enter brew method">
+                        <input type="text" placeholder="Enter brew method" id="brewMethodOne">
+                        <input type="text" placeholder="Enter brew method" id="brewMethodTwo"> 
+                        <input type="text" placeholder="Enter brew method" id="brewMethodThree">
                     </div>
                     <div class="detailColumn">
                         <h4>Shared With</h4>
-                        <input type="text" placeholder="Enter name">
-                        <input type="text" placeholder="Enter name">
-                        <input type="text" placeholder="Enter name">
+                        <input type="text" placeholder="Enter name" id="sharedWithOne">
+                        <input type="text" placeholder="Enter name" id="sharedWithTwo">
+                        <input type="text" placeholder="Enter name" id="sharedWithThree">
                     </div>
                 </div>
 
@@ -213,7 +221,7 @@
                 <!-- Something I Learned About This Coffee -->
                 <div class="learnedAbout">
                     <h4>Something I Learned About This Coffee</h4>
-                    <textarea class="singleLineText" placeholder="Write here..."></textarea>
+                    <textarea class="singleLineText" placeholder="Write here..." id="learnedAbout" ></textarea>
                 </div>
 
                 <hr>
@@ -221,7 +229,7 @@
                 <!-- Additional Thoughts -->
                 <div class="additionalThoughts">
                     <h4>Additional Thoughts</h4>
-                    <textarea class="singleLineText" placeholder="Write here..."></textarea>
+                    <textarea class="singleLineText" placeholder="Write here..." id="additionalThoughts"></textarea>
             
                 </div>
             </div>
@@ -242,6 +250,7 @@
         </button>
         <div class="dropdown-menu" id="dropdown-menu">
             <ul>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="contents.html">Contents</a></li>
                 <!-- Optionally, add more items in the future -->

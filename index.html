@@ -260,6 +260,7 @@
             <a href="">Home</a>
             <a href="pages/feedback.html">Feedback</a>
             <a href="pages/login.html">Login</a>
+            <a href="pages/profile.html" id="profile-link" style="display: none;">Profile</a>
         </nav>
     </header>
 
@@ -324,36 +325,37 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        const testimonialWrapper = document.querySelector('.testimonial-wrapper');
-        const testimonials = document.querySelectorAll('.testimonial');
-        const totalTestimonials = testimonials.length;
-        const testWrapperWidth = testimonialWrapper.offsetWidth;
-        const testWidth = testimonials[0].offsetWidth + 20; // Including the margin
-        const scrollSpeed = 1; // Adjust this for speed, higher means slower
+        document.addEventListener('DOMContentLoaded', function () {            
+            const testimonialWrapper = document.querySelector('.testimonial-wrapper');
+            const testimonials = document.querySelectorAll('.testimonial');
+            const totalTestimonials = testimonials.length;
+            const testWrapperWidth = testimonialWrapper.offsetWidth;
+            const testWidth = testimonials[0].offsetWidth + 20; // Including the margin
+            const scrollSpeed = 1; // Adjust this for speed, higher means slower
+            
 
-        let offset = 0;
+            let offset = 0;
 
-        // Clone the testimonials to make it a continuous loop
-        testimonialWrapper.innerHTML += testimonialWrapper.innerHTML;
+            // Clone the testimonials to make it a continuous loop
+            testimonialWrapper.innerHTML += testimonialWrapper.innerHTML;
 
-        function animateTestimonials() {
-            offset += scrollSpeed;
+            function animateTestimonials() {
+                offset += scrollSpeed;
 
-            // If the testimonials have moved enough, reset to start position
-            if (offset >= totalTestimonials * testWidth) {
-                offset = 0;
+                // If the testimonials have moved enough, reset to start position
+                if (offset >= totalTestimonials * testWidth) {
+                    offset = 0;
+                }
+
+                // Apply the transform to create the scrolling effect
+                testimonialWrapper.style.transform = `translateX(-${offset}px)`;
+
+                // Call the function again for the next frame
+                requestAnimationFrame(animateTestimonials);
             }
 
-            // Apply the transform to create the scrolling effect
-            testimonialWrapper.style.transform = `translateX(-${offset}px)`;
-
-            // Call the function again for the next frame
-            requestAnimationFrame(animateTestimonials);
-        }
-
-        // Start the animation
-        animateTestimonials();
+            // Start the animation
+            animateTestimonials();
     });
 
 

@@ -124,24 +124,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load notes from local storage
     function loadNotes(coffeeId) {
-        if (!coffeeId || !dateTastedOne) return;
-        const notes = localStorage.getItem(coffeeId);
-        dateTastedOne.value = notes ? notes : '';
+        if (!coffeeId) return;
+        const fields = ['aroma', 'body', 'acidity', 'flavour', 'dateTastedOne', 'dateTastedTwo', 'dateTastedThree', 'brewMethodOne', 'brewMethodTwo', 'brewMethodThree', 'sharedWithOne', 'sharedWithTwo', 'sharedWithThree', 'learnedAbout', 'additionalThoughts'];
+
+        fields.forEach(field => {
+            const element = document.getElementById(field);
+            if (element) {
+                const savedValue = localStorage.getItem(`${coffeeId}-${field}`);
+                element.value = savedValue ? savedValue : '';
+            }
+        });
     }
 
     // Save notes to local storage
     function saveNotes() {
-        if (!coffees[currentIndex] || !dateTastedOne) return;
+        if (!coffees[currentIndex]) return;
         const coffeeId = coffees[currentIndex].id; // Use coffee ID for storage
-        const notes = dateTastedOne.value;
-        localStorage.setItem(coffeeId, notes);
+        const fields = ['aroma', 'body', 'acidity', 'flavour', 'dateTastedOne', 'dateTastedTwo', 'dateTastedThree', 'brewMethodOne', 'brewMethodTwo', 'brewMethodThree', 'sharedWithOne', 'sharedWithTwo', 'sharedWithThree', 'learnedAbout', 'additionalThoughts'];
+
+
+        fields.forEach(field => {
+            const element = document.getElementById(field);
+            if (element) {
+                const value = element.value;
+                if (value) {
+                    localStorage.setItem(`${coffeeId}-${field}`, value);
+                }
+            }
+        });
     }
 
     // Initial setup
     fetchCoffee().then(() => {
-        if (dateTastedOne) {
-            dateTastedOne.addEventListener('input', saveNotes);
-        }
+        // Set up event listeners to save on input
+        const fields = ['aroma', 'body', 'acidity', 'flavour', 'dateTastedOne', 'dateTastedTwo', 'dateTastedThree', 'brewMethodOne', 'brewMethodTwo', 'brewMethodThree', 'sharedWithOne', 'sharedWithTwo', 'sharedWithThree', 'learnedAbout', 'additionalThoughts'];
+
+        fields.forEach(field => {
+            const element = document.getElementById(field);
+            if (element) {
+                element.addEventListener('input', saveNotes);
+            }
+        });
     });
 
     // Handle Arrow Key Navigation
